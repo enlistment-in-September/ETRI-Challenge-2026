@@ -1,0 +1,37 @@
+# 가상환경
+.venv/
+venv/
+env/
+
+# 데이터 파일 (대용량 / 배포 금지)
+data/raw/
+data/submissions/
+data/*.csv
+data/*.pdf
+data/*.parquet
+
+# Python 캐시
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# PyCharm
+.idea/
+*.iml
+
+# Claude Code
+.claude/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 모델 체크포인트
+*.pt
+*.pth
+*.ckpt

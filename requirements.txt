@@ -1,0 +1,56 @@
+# ============================================================
+# life_log 프로젝트 패키지 목록
+# Python 3.11.9 / Windows 11 / CPU-only (no CUDA)
+# 생성일: 2026-07-02
+# ============================================================
+
+# --- 핵심 데이터 처리 ---
+numpy==2.4.6
+pandas==3.0.3
+scipy==1.17.1
+pyarrow==24.0.0
+
+# --- 머신러닝 (Tree-based) ---
+scikit-learn==1.9.0
+lightgbm==4.6.0
+catboost==1.2.10
+xgboost==3.2.0
+
+# --- 딥러닝 (BiLSTM) ---
+# CPU 전용 빌드 — GPU 환경은 아래 주석 참고
+torch==2.12.1+cpu
+# GPU(CUDA 12.1) 사용 시:
+#   pip install torch --index-url https://download.pytorch.org/whl/cu121
+
+# --- 도메인 유틸리티 ---
+holidays==0.99          # 한국 공휴일 (holidays.KR)
+
+# --- scikit-learn 의존성 ---
+joblib==1.5.3
+threadpoolctl==3.6.0
+narwhals==2.23.0
+
+# --- pandas / torch 의존성 ---
+python-dateutil==2.9.0.post0
+tzdata==2026.2
+typing_extensions==4.15.0
+filelock==3.29.0
+fsspec==2026.4.0
+networkx==3.6.1
+sympy==1.14.0
+mpmath==1.3.0
+Jinja2==3.1.6
+MarkupSafe==3.0.3
+
+# --- catboost 의존성 ---
+matplotlib==3.11.0
+plotly==6.8.0
+graphviz==0.21
+six==1.17.0
+contourpy==1.3.3
+cycler==0.12.1
+fonttools==4.63.0
+kiwisolver==1.5.0
+pillow==12.3.0
+pyparsing==3.3.2
+packaging==26.2
