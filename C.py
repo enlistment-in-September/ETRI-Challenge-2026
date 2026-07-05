@@ -1001,45 +1001,4 @@ for i, t in enumerate(TARGETS):
 output_path = OUTPUT_DIR / 'submission.csv'
 submission.to_csv(output_path, index=False)
 print(f"\n 제출 파일 생성됨: {output_path}")
-    calibrated_test = calibrator.predict_proba(calib_test_X)[:, 1]
-
-    calib_loss = log_loss(y, calibrated_oof)
-
-    print("Calibrated Loss:", calib_loss)
-    threshold = 0.5
-    pred_binary = (calibrated_oof > threshold).astype(int)
-    f1 = f1_score(y, pred_binary)
-    print(f"F1 Score (threshold=0.5): {f1:.4f}")
-    print(classification_report(y, pred_binary))
-
-    if calib_loss < meta_loss:
-        final_test = calibrated_test
-        print("Use calibrated")
-    else:
-        final_test = meta_test
-        print("Use raw blend")
-
-    clip_low = max(0.01, y.mean() * 0.10)
-    clip_high = min(0.99, 1 - (1 - y.mean()) * 0.10)
-
-    test_preds[:, ti] = np.clip(
-        final_test,
-        clip_low,
-        clip_high
-    )
-    print(f"   -> Dynamic clipping: [{clip_low:.4f}, {clip_high:.4f}]")
-
-# ===================================================== - 최종 제출 파일 생성 =====================================================
-oof_df = train_full[["subject_id", "sleep_date", "lifelog_date"]].copy()
-for i, t in enumerate(TARGETS):
-    oof_df[t] = oof_preds[:, i]
-oof_path = OUTPUT_DIR / 'oof_lgbcatxgb.csv'
-oof_df.to_csv(oof_path, index=False)
-print(f"OOF 저장됨: {oof_path}")
-submission = test_df[["subject_id", "sleep_date", "lifelog_date"]].copy()
-for i, t in enumerate(TARGETS):
-    submission[t] = test_preds[:, i]
-
-output_path = OUTPUT_DIR / 'submission.csv'
-submission.to_csv(output_path, index=False)
 print(f"\n 제출 파일 생성됨: {output_path}")
