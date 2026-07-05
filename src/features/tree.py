@@ -473,15 +473,19 @@ def build_tree_features(train_df, test_df):
         'subject_num', 'dow', 'month', 'week', 'is_weekend',
         'is_holiday', 'is_holiday_or_weekend', 'is_next_holiday', 'is_next_weekend', 'is_before_freeday',
     }
-    norm_cols = [
-        c for c in feat_all.select_dtypes(include=[np.number]).columns
-        if c not in exclude_from_norm and 'lag' not in c and 'roll' not in c
-    ]
-    for col in norm_cols:
-        stats = feat_all.loc[is_train].groupby('subject_id')[col].agg(mu='mean', sig='std')
-        stats['sig'] = stats['sig'].replace(0, np.nan)
-        mu = feat_all['subject_id'].map(stats['mu'])
-        sig = feat_all['subject_id'].map(stats['sig'])
-        feat_all[f'{col}_subj_z'] = (feat_all[col] - mu) / sig
+    if SUBJ_Z_MODE != 'none':
+        norm_cols = [
+            c for c in feat_all.select_dtypes(include=[np.number]).columns
+            if c not in exclude_from_norm and 'lag' not in c and 'roll' not in c
+        ]
+        if SUBJ_Z_MODE == 'physio':
+            physio_prefixes = ('hr_', 'act_', 'pedo_', 'slp_')
+            norm_cols = [c for c in norm_cols if c.startswith(physio_prefixes)]
+        for col in norm_cols:
+            stats = feat_all.loc[is_train].groupby('subject_id')[col].agg(mu='mean', sig='std')
+            stats['sig'] = stats['sig'].replace(0, np.nan)
+            mu = feat_all['subject_id'].map(stats['mu'])
+            sig = feat_all['subject_id'].map(stats['sig'])
+            feat_all[f'{col}_subj_z'] = (feat_all[col] - mu) / sig
 
     return feat_all, sleep_feats

@@ -268,7 +268,7 @@ def run():
         oof_df[t] = oof_preds[:, i]
     oof_path = OUTPUT_DIR / 'oof_lgbcatxgb.csv'
     oof_df.to_csv(oof_path, index=False)
-    print(f"OOF ??λ맖: {oof_path}")
+    print(f"OOF saved: {oof_path}")
 
     # Save submission
     submission = test_df[["subject_id", "sleep_date", "lifelog_date"]].copy()
@@ -276,7 +276,7 @@ def run():
         submission[t] = test_preds[:, i]
     output_path = OUTPUT_DIR / 'submission.csv'
     submission.to_csv(output_path, index=False)
-    print(f"?쒖텧 ?뚯씪 ?앹꽦?? {output_path}")
+    print(f"Submission file saved: {output_path}")
 
 
 if __name__ == "__main__":

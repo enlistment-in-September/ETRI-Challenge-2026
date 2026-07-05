@@ -35,3 +35,14 @@ Thumbs.db
 *.pt
 *.pth
 *.ckpt
+
+# Ablation 실험용 사본/산출물 (원본 코드와 분리, 결과 재현용 스크래치)
+*_ablation.py
+ablation_runner.py
+data/ablation_scratch/
+
+# 개인 작업 로그 (레포에 올리지 않음)
+ABLATION_EXPERIMENTS.txt
+ABLATION_SUMMARY.txt
+TUNING_LOG.txt
+REPORT.md

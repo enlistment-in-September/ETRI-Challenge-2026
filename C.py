@@ -23,10 +23,10 @@ from sklearn.metrics import f1_score, classification_report
 # 0. 경로 설정
 # =====================================================
 
-BASE_DIR = Path('/Users/bagjaeyong/Desktop/대학교/2026-1/ETRI 휴먼이해 인공지능/data 2')
-ITEMS_DIR = BASE_DIR / 'ch2025_data_items'
+BASE_DIR = Path(__file__).resolve().parent / 'data'
+ITEMS_DIR = BASE_DIR / 'raw'
 OUTPUT_DIR = BASE_DIR / 'submissions'
-OUTPUT_DIR.mkdir(exist_ok=True)
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 TARGETS = ['Q1', 'Q2', 'Q3', 'S1', 'S2', 'S3', 'S4']
 

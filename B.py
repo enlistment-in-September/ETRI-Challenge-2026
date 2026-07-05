@@ -18,8 +18,8 @@ from sklearn.preprocessing import StandardScaler
 # =========================================================
 # CONFIG
 # =========================================================
-BASE_DIR = "/Users/bagjaeyong/Desktop/대학교/2026-1/ETRI 휴먼이해 인공지능/data 2"
-DATA_DIR = os.path.join(BASE_DIR, "ch2025_data_items")
+BASE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+DATA_DIR = os.path.join(BASE_DIR, "raw")
 TRAIN_CSV = os.path.join(DATA_DIR, "ch2026_metrics_train.csv")
 TEST_CSV  = os.path.join(DATA_DIR, "ch2026_submission_sample.csv")
 

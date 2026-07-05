@@ -1,6 +1,8 @@
 import warnings
 warnings.filterwarnings("ignore")
 
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -11,9 +13,8 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import log_loss
 
-data = pd.read_csv(
-    "/Users/bagjaeyong/Desktop/대학교/2026-1/ETRI 휴먼이해 인공지능/data 2/train_full.csv"
-)
+BASE_DIR = Path(__file__).resolve().parent / 'data'
+data = pd.read_csv(BASE_DIR / 'train_full.csv')
 
 TARGETS = ["Q1", "Q2", "Q3", "S1", "S2", "S3", "S4"]
 Q_TARGETS = ["Q1", "Q2", "Q3"]
