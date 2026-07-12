@@ -57,7 +57,9 @@ life_log/
 │   ├── raw/              # 원본 parquet · csv (변경 금지)
 │   └── submissions/      # 출력 파일 (자동 생성)
 │
-└── A.py / B.py / C.py    # 원본 단일 스크립트 (참고용)
+├── A.py / B.py / C.py    # 원본 단일 스크립트 (참고용)
+│
+└──Proximal gcomp v5 final.py # proximal
 ```
 
 ## 사용 방법
